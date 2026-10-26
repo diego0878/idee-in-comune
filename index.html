@@ -3,196 +3,660 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idee in Comune | ITI Omar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070914">
+<title>OMAR/IDEAS — Idee in Comune</title>
+
 <style>
-:root{--bg:#f5f6fa;--ink:#20243a;--muted:#737991;--purple:#6558e8;--line:#e9eaf2}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
-header{background:#fff;border-bottom:1px solid var(--line);padding:17px 22px;position:sticky;top:0;z-index:2}
-.nav{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:21px;font-weight:800;letter-spacing:-.7px}
-.logo span{color:var(--purple)}
-.pill{background:#eeecff;color:var(--purple);border-radius:20px;padding:8px 12px;font-size:12px;font-weight:bold}
-main{max-width:1050px;margin:28px auto;padding:0 16px;display:grid;grid-template-columns:1.7fr 1fr;gap:22px}
-h1{font-size:34px;line-height:1.1;letter-spacing:-1.2px;margin:0 0 10px}
-.sub{color:var(--muted);line-height:1.6;margin:0 0 22px}
-.card{background:white;border:1px solid var(--line);border-radius:19px;padding:22px;margin-bottom:17px;box-shadow:0 5px 20px #25294d08}
-h2{font-size:18px;margin:0 0 16px}
-label{display:block;font-size:13px;font-weight:700;margin:13px 0 7px}
-input,select,textarea{width:100%;border:1px solid #dfe1ec;border-radius:11px;padding:12px;font:inherit;background:#fff;color:var(--ink)}
-textarea{min-height:105px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:2px solid #c9c4ff;border-color:var(--purple)}
-button{border:0;border-radius:11px;padding:12px 16px;background:var(--purple);color:white;font-weight:bold;font-size:14px;cursor:pointer}
-button:hover{filter:brightness(.95)}
-button:disabled{opacity:.5;cursor:not-allowed}
-.full{width:100%;margin-top:14px}
-.feed-head{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 14px}
-.feed-head h2{margin:0}
-.post-top{display:flex;align-items:center;gap:11px;margin-bottom:15px}
-.avatar{width:40px;height:40px;border-radius:14px;background:#eeecff;color:var(--purple);display:grid;place-items:center;font-weight:800}
-.post-author{font-weight:bold;font-size:14px}
-.meta{color:var(--muted);font-size:12px;margin-top:4px}
-.tag{margin-left:auto;background:#f0efff;color:#6256dc;padding:6px 9px;border-radius:9px;font-size:11px;font-weight:bold}
-.post-text{white-space:pre-wrap;line-height:1.6;font-size:15px;margin:0 0 17px;overflow-wrap:anywhere}
-.like{background:#f5f4ff;color:var(--purple);border:1px solid #e8e5ff}
-.like.liked{background:#6558e8;color:white}
-.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
-.side-title{font-size:14px;font-weight:bold;margin-bottom:10px}
-.rule{display:flex;gap:10px;line-height:1.5;font-size:13px;margin:12px 0}
-.number{width:25px;height:25px;flex-shrink:0;border-radius:9px;background:#eeecff;color:var(--purple);display:grid;place-items:center;font-weight:bold}
-.empty{text-align:center;color:var(--muted);padding:26px 10px;font-size:14px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
-@media(max-width:760px){main{grid-template-columns:1fr;margin-top:20px}.side{order:2}h1{font-size:30px}.nav{flex-wrap:wrap}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#070914;
+  --panel:#0e1325;
+  --line:#293252;
+  --text:#f4f7ff;
+  --muted:#929bb9;
+  --cyan:#55f6e5;
+  --blue:#91a7ff;
+  --violet:#b18aff;
+  --pink:#ff8caf;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:
+    radial-gradient(ellipse at 10% 0%,#4e62ff26,transparent 38%),
+    radial-gradient(ellipse at 100% 20%,#00ffdc12,transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  min-height:100vh;
+}
+
+body:before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.12;
+  background-image:
+    linear-gradient(#8195ff20 1px,transparent 1px),
+    linear-gradient(90deg,#8195ff20 1px,transparent 1px);
+  background-size:42px 42px;
+}
+
+.wrap {
+  width:min(1080px,calc(100% - 32px));
+  margin:auto;
+  position:relative;
+}
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.brand {
+  display:flex;
+  gap:11px;
+  align-items:center;
+  font-weight:700;
+  letter-spacing:-.04em;
+}
+
+.logo {
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  color:#08101b;
+  font-size:22px;
+  box-shadow:0 0 28px #55f6e52b;
+}
+
+.pill,.eyebrow,.counter,.meta {
+  font:11px 'DM Mono',monospace;
+  letter-spacing:.09em;
+}
+
+.pill {
+  color:var(--cyan);
+  border:1px solid #55f6e545;
+  border-radius:30px;
+  padding:8px 11px;
+}
+
+.hero {
+  padding:54px 0 34px;
+  max-width:780px;
+}
+
+.eyebrow {
+  color:var(--cyan);
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan);
+}
+
+h1 {
+  font-size:clamp(42px,7vw,74px);
+  line-height:.99;
+  letter-spacing:-.075em;
+  margin:20px 0 18px;
+}
+
+h1 span {
+  color:transparent;
+  background:linear-gradient(95deg,var(--cyan),var(--blue),var(--violet));
+  background-clip:text;
+}
+
+.hero p {
+  color:var(--muted);
+  line-height:1.7;
+  max-width:600px;
+  margin:0;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 285px;
+  gap:20px;
+  padding:8px 0 64px;
+  align-items:start;
+}
+
+.head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:0 0 14px;
+}
+
+.head h2 {
+  font-size:18px;
+  letter-spacing:-.03em;
+  margin:0;
+}
+
+.counter { color:var(--muted); }
+
+.panel {
+  background:linear-gradient(145deg,#11172bf5,#0b1020f5);
+  border:1px solid var(--line);
+  border-radius:19px;
+  box-shadow:0 18px 65px #0002;
+}
+
+.formpanel {
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.formpanel:before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent);
+}
+
+label {
+  display:block;
+  font-size:11px;
+  letter-spacing:.05em;
+  color:#cbd3ec;
+  margin:0 0 8px;
+  font-weight:700;
+}
+
+.field { margin-bottom:17px; }
+
+.twocol {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+input,textarea {
+  width:100%;
+  background:#080c19;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:13px;
+  color:var(--text);
+  font:15px 'Space Grotesk',sans-serif;
+  outline:none;
+}
+
+input:focus,textarea:focus {
+  border-color:var(--cyan);
+  box-shadow:0 0 0 3px #55f6e512;
+}
+
+textarea {
+  resize:vertical;
+  min-height:125px;
+  line-height:1.6;
+}
+
+.hint {
+  font-size:11px;
+  color:var(--muted);
+  margin-top:7px;
+}
+
+.actions {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+}
+
+.btn {
+  border:0;
+  border-radius:11px;
+  padding:13px 17px;
+  font:700 14px 'Space Grotesk',sans-serif;
+  cursor:pointer;
+}
+
+.primary {
+  color:#07101a;
+  background:linear-gradient(100deg,var(--cyan),#aabaff);
+  box-shadow:0 8px 25px #55f6e51c;
+}
+
+.status {
+  font-size:12px;
+  color:var(--muted);
+  min-height:18px;
+}
+
+.error { color:var(--pink)!important; }
+.ok { color:var(--cyan)!important; }
+
+.feed { display:grid; gap:13px; }
+
+.post {
+  padding:19px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#11172a,#0b1020);
+  border:1px solid var(--line);
+  animation:up .25s ease;
+}
+
+@keyframes up {
+  from { opacity:0; transform:translateY(7px); }
+  to { opacity:1; transform:none; }
+}
+
+.posttop {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.author {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar {
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:linear-gradient(140deg,#1b4553,#35305d);
+  border:1px solid #55f6e540;
+  color:var(--cyan);
+  font-weight:700;
+}
+
+.authorname { font-size:13px; font-weight:700; }
+
+.meta {
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+}
+
+.tag {
+  font:10px 'DM Mono',monospace;
+  color:var(--cyan);
+  border:1px solid #55f6e52a;
+  border-radius:30px;
+  padding:6px 8px;
+}
+
+.postbody {
+  font-size:15px;
+  line-height:1.7;
+  color:#e7ebfa;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.postfoot {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:18px;
+  padding-top:13px;
+  border-top:1px solid #ffffff0d;
+}
+
+.like {
+  background:#141b31;
+  border:1px solid #293453;
+  border-radius:10px;
+  padding:8px 12px;
+  color:#c5cde5;
+  font:600 12px 'Space Grotesk',sans-serif;
+  cursor:pointer;
+}
+
+.like:hover {
+  border-color:var(--violet);
+  color:white;
+}
+
+.like.liked {
+  color:var(--pink);
+  border-color:#ff8caf70;
+  background:#ff8caf0d;
+}
+
+.empty {
+  padding:32px 18px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed var(--line);
+  border-radius:16px;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.empty strong {
+  display:block;
+  color:var(--text);
+  margin-bottom:5px;
+}
+
+.side {
+  padding:22px;
+  position:sticky;
+  top:20px;
+}
+
+.side h3 {
+  font-size:15px;
+  margin:0 0 16px;
+}
+
+.rule {
+  display:flex;
+  gap:11px;
+  margin:15px 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.rule b {
+  color:var(--cyan);
+  font:12px 'DM Mono',monospace;
+}
+
+.sidefoot {
+  border-top:1px solid var(--line);
+  margin-top:19px;
+  padding-top:15px;
+  color:#737e9f;
+  font-size:10px;
+  line-height:1.6;
+}
+
+footer {
+  padding:20px 0 30px;
+  border-top:1px solid var(--line);
+  font:10px 'DM Mono',monospace;
+  color:#697391;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:780px) {
+  .layout { grid-template-columns:1fr; }
+  .side { position:static; grid-row:1; }
+}
+
+@media(max-width:480px) {
+  .wrap { width:calc(100% - 24px); }
+  nav { padding:17px 0; }
+  .pill { font-size:9px; padding:7px; }
+  .hero { padding:40px 0 26px; }
+  h1 { font-size:46px; }
+  .formpanel,.side { padding:17px; }
+  .twocol { grid-template-columns:1fr; gap:0; }
+  .actions { align-items:stretch; flex-direction:column; }
+  .primary { width:100%; }
+  .post { padding:16px; }
+}
 </style>
 </head>
+
 <body>
-<header>
-  <div class="nav">
-    <div class="logo">idee <span>in comune.</span></div>
-    <div class="pill">ITI OMAR · LA TUA VOCE CONTA</div>
+<div class="wrap">
+
+<nav>
+  <div class="brand">
+    <div class="logo">✳</div>
+    <div>OMAR<span style="color:var(--cyan)">/</span>IDEAS</div>
   </div>
+  <div class="pill">● SPAZIO STUDENTI</div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow"><span class="dot"></span> ITI OMAR · IDEE IN COMUNE</div>
+  <h1>La scuola di domani.<br><span>Inizia da te.</span></h1>
+  <p>Hai un'idea per migliorare la scuola? Scrivila, condividila e fai squadra con gli altri studenti. Le idee migliori nascono insieme.</p>
 </header>
 
-<main>
+<main class="layout">
 <section>
-  <h1>La scuola che<br>vorremmo. 💡</h1>
-  <p class="sub">Un posto dove le idee diventano proposte concrete. Scrivi la tua, scopri quelle degli altri e vota le proposte che vorresti vedere realizzate.</p>
 
-  <div class="card">
-    <h2>✍️ Condividi un'idea</h2>
-    <form id="ideaForm">
-      <label for="nome">Il tuo nome</label>
-      <input id="nome" maxlength="40" placeholder="Come ti chiami?" required>
-      <label for="classe">La tua classe</label>
-      <input id="classe" maxlength="20" placeholder="Es. 3A Informatica" required>
-      <label for="categoria">Categoria</label>
-      <select id="categoria">
-        <option>Vita scolastica</option>
-        <option>Spazi e ambienti</option>
-        <option>Eventi e attività</option>
-        <option>Didattica</option>
-        <option>Altro</option>
-      </select>
-      <label for="testo">La tua proposta</label>
-      <textarea id="testo" maxlength="700" placeholder="Che cosa cambieresti e perché?" required></textarea>
-      <button class="full" type="submit">Pubblica la mia idea ↗</button>
-      <p class="notice">Prima di pubblicare, ricorda che i contenuti devono essere rispettosi e non devono includere dati personali di altre persone.</p>
-      <p id="feedback" class="notice" role="status"></p>
-    </form>
+  <div class="head">
+    <h2>Condividi un'idea</h2>
+    <span class="counter">01 / CONTRIBUISCI</span>
   </div>
 
-  <div class="feed-head">
-    <h2>La bacheca 💬</h2>
-    <span class="pill" id="count">0 idee</span>
+  <form class="panel formpanel" id="ideaForm">
+    <div class="twocol">
+      <div class="field">
+        <label for="name">IL TUO NOME</label>
+        <input id="name" maxlength="35" placeholder="Es. Luca" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="classroom">LA TUA CLASSE</label>
+        <input id="classroom" maxlength="12" placeholder="Es. 3B" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="idea">LA TUA IDEA</label>
+      <textarea id="idea" maxlength="600" placeholder="Se potessi cambiare una cosa della scuola, sarebbe..." required></textarea>
+      <div class="hint"><span id="charCount">0</span>/600 caratteri · Niente insulti o contenuti offensivi.</div>
+    </div>
+
+    <div class="actions">
+      <div class="status" id="status" aria-live="polite">La tua idea può fare la differenza.</div>
+      <button class="btn primary" type="submit">Pubblica idea ↗</button>
+    </div>
+  </form>
+
+  <div class="head" style="margin-top:30px">
+    <h2>Idee della community</h2>
+    <span class="counter" id="ideaCount">00 IDEE</span>
   </div>
-  <div id="feed"></div>
+
+  <div class="feed" id="feed" aria-live="polite"></div>
 </section>
 
-<aside class="side">
-  <div class="card">
-    <h2>La community 🫶</h2>
-    <p class="sub" style="margin-bottom:0">La scuola migliora quando ognuno può proporre qualcosa. Anche una piccola idea può fare la differenza.</p>
-  </div>
-  <div class="card">
-    <div class="side-title">Come funziona?</div>
-    <div class="rule"><span class="number">1</span><span><b>Scrivi</b><br>Condividi una proposta concreta.</span></div>
-    <div class="rule"><span class="number">2</span><span><b>Scopri</b><br>Leggi le idee nella bacheca.</span></div>
-    <div class="rule"><span class="number">3</span><span><b>Vota</b><br>Metti Mi piace alle proposte che sostieni.</span></div>
-  </div>
-  <div class="card">
-    <div class="side-title">Un progetto per tutti 💜</div>
-    <p class="notice">Usa questo spazio con rispetto. Niente insulti, contenuti discriminatori o informazioni private.</p>
-  </div>
+<aside class="panel side">
+  <h3><span style="color:var(--cyan)">✳</span> Come funziona</h3>
+  <div class="rule"><b>01</b><span><strong style="color:var(--text)">Scrivi.</strong> Bastano nome, classe e una proposta concreta.</span></div>
+  <div class="rule"><b>02</b><span><strong style="color:var(--text)">Condividi.</strong> Le idee pubblicate appaiono nel feed.</span></div>
+  <div class="rule"><b>03</b><span><strong style="color:var(--text)">Sostieni.</strong> Metti like alle idee che vorresti vedere realizzate.</span></div>
+  <div class="rule"><b>04</b><span><strong style="color:var(--text)">Rispetta.</strong> Le parole offensive vengono bloccate dal filtro.</span></div>
+  <div class="sidefoot">PROGETTO STUDENTESCO · ITI OMAR<br>Una community migliore parte dal rispetto.</div>
 </aside>
 </main>
 
-<footer>Idee in Comune · ITI Omar · La tua voce conta.</footer>
+<footer>
+  <span>OMAR/IDEAS — IDEE IN COMUNE</span>
+  <span>IMMAGINA · CONDIVIDI · MIGLIORA</span>
+</footer>
+
+</div>
 
 <script>
-const STORAGE_KEY = "idee-in-comune-demo-v1";
-let posts = [];
-try { posts = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
-catch(e) { posts = []; }
+const KEY='omarIdeasV2';
 
-const feed = document.getElementById("feed");
-const form = document.getElementById("ideaForm");
-const feedback = document.getElementById("feedback");
+const blocked=[
+  'cazzo','cazzi','merda','merde','stronzo','stronza','stronzi',
+  'vaffanculo','fanculo','puttana','bastardo','coglione','coglioni',
+  'minchia','troia','porcodio','porco dio'
+];
+
+let posts=[];
+try {
+  posts=JSON.parse(localStorage.getItem(KEY)||'[]');
+  if(!Array.isArray(posts)) posts=[];
+} catch(e) {
+  posts=[];
+}
+
+const $=id=>document.getElementById(id);
+const form=$('ideaForm');
+const feed=$('feed');
+const idea=$('idea');
+
+function normalize(s) {
+  return s.toLocaleLowerCase('it')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .replace(/[@4]/g,'a')
+    .replace(/[3€]/g,'e')
+    .replace(/[1!|]/g,'i')
+    .replace(/0/g,'o')
+    .replace(/5/g,'s')
+    .replace(/[^a-z0-9 ]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function offensive(s) {
+  const n=' '+normalize(s)+' ';
+  return blocked.some(w=>n.includes(' '+normalize(w)+' '));
+}
+
+function safe(s) {
+  return String(s).replace(/[&<>"']/g,c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
 
 function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+  try {
+    localStorage.setItem(KEY,JSON.stringify(posts));
+  } catch(e) {}
+}
+
+function status(message,type='') {
+  $('status').textContent=message;
+  $('status').className='status '+type;
 }
 
 function render() {
-  feed.replaceChildren();
-  document.getElementById("count").textContent =
-    posts.length + (posts.length === 1 ? " idea" : " idee");
+  $('ideaCount').textContent=
+    String(posts.length).padStart(2,'0')+
+    ' IDE'+(posts.length===1?'A':'E');
 
-  if (!posts.length) {
-    const empty = document.createElement("div");
-    empty.className = "card empty";
-    empty.textContent = "La bacheca è pronta per la prima idea. 💡";
-    feed.appendChild(empty);
+  if(!posts.length) {
+    feed.innerHTML=
+      '<div class="empty"><strong>Il feed è pronto per la tua idea.</strong>'+
+      'Qui appariranno le proposte pubblicate su questo dispositivo.</div>';
     return;
   }
 
-  [...posts].reverse().forEach(post => {
-    const card = document.createElement("article");
-    card.className = "card";
-    const top = document.createElement("div");
-    top.className = "post-top";
-    const avatar = document.createElement("div");
-    avatar.className = "avatar";
-    avatar.textContent = "💡";
-    const info = document.createElement("div");
-    const author = document.createElement("div");
-    author.className = "post-author";
-    author.textContent = "Studente · " + post.classe;
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    meta.textContent = post.data;
-    info.append(author, meta);
-    const tag = document.createElement("span");
-    tag.className = "tag";
-    tag.textContent = post.categoria;
-    top.append(avatar, info, tag);
-
-    const body = document.createElement("p");
-    body.className = "post-text";
-    body.textContent = post.testo;
-
-    const like = document.createElement("button");
-    like.className = "like" + (post.liked ? " liked" : "");
-    like.textContent = (post.liked ? "♥" : "♡") + " Mi piace · " + post.likes;
-    like.addEventListener("click", () => {
-      post.liked = !post.liked;
-      post.likes += post.liked ? 1 : -1;
-      save();
-      render();
-    });
-    card.append(top, body, like);
-    feed.appendChild(card);
-  });
+  feed.innerHTML=[...posts].reverse().map(p=>
+    '<article class="post">'+
+      '<div class="posttop">'+
+        '<div class="author">'+
+          '<div class="avatar">'+safe(p.name.trim().charAt(0).toUpperCase())+'</div>'+
+          '<div><div class="authorname">'+safe(p.name)+
+          ' <span style="color:var(--muted);font-weight:400">· '+
+          safe(p.classroom)+'</span></div>'+
+          '<div class="meta">'+safe(p.date)+'</div></div>'+
+        '</div><span class="tag">IDEA</span>'+
+      '</div>'+
+      '<div class="postbody">'+safe(p.idea)+'</div>'+
+      '<div class="postfoot">'+
+        '<span class="meta">UN’IDEA PUÒ CAMBIARE LE COSE</span>'+
+        '<button class="like '+(p.liked?'liked':'')+
+        '" data-id="'+safe(p.id)+'" aria-pressed="'+!!p.liked+'">'+
+        (p.liked?'♥':'♡')+' Mi piace · '+Number(p.likes||0)+
+        '</button>'+
+      '</div>'+
+    '</article>'
+  ).join('');
 }
 
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  const nome = document.getElementById("nome").value.trim();
-  const classe = document.getElementById("classe").value.trim();
-  const testo = document.getElementById("testo").value.trim();
-  const categoria = document.getElementById("categoria").value;
-  if (!nome || !classe || !testo) {
-    feedback.textContent = "Compila tutti i campi prima di pubblicare.";
+idea.addEventListener('input',()=>
+  $('charCount').textContent=idea.value.length
+);
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+
+  const name=$('name').value.trim();
+  const classroom=$('classroom').value.trim();
+  const text=idea.value.trim();
+
+  if(!name||!classroom||!text) {
+    status('Compila tutti e tre i campi.','error');
     return;
   }
+
+  if(offensive(name+' '+text)) {
+    status('La proposta contiene parole offensive. Modifica il testo e riprova.','error');
+    return;
+  }
+
+  if(text.length<8) {
+    status('Scrivi un’idea un po’ più completa.','error');
+    return;
+  }
+
   posts.push({
-    classe, testo, categoria, likes: 0, liked: false,
-    data: new Date().toLocaleDateString("it-IT")
+    id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),
+    name,
+    classroom,
+    idea:text,
+    date:new Date().toLocaleDateString('it-IT',{
+      day:'2-digit',month:'short',year:'numeric'
+    }),
+    likes:0,
+    liked:false
   });
+
   save();
   render();
   form.reset();
-  feedback.textContent = "Idea aggiunta alla bacheca su questo dispositivo!";
+  $('charCount').textContent='0';
+  status('Idea aggiunta su questo dispositivo.','ok');
+});
+
+feed.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-id]');
+  if(!b) return;
+
+  const p=posts.find(x=>x.id===b.dataset.id);
+  if(!p) return;
+
+  p.liked=!p.liked;
+  p.likes=Math.max(0,(p.likes||0)+(p.liked?1:-1));
+  save();
+  render();
 });
 
 render();
