@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idee in Comune | ITI Omar</title>
+<style>
+:root{--bg:#f5f6fa;--ink:#20243a;--muted:#737991;--purple:#6558e8;--line:#e9eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);padding:17px 22px;position:sticky;top:0;z-index:2}
+.nav{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:21px;font-weight:800;letter-spacing:-.7px}
+.logo span{color:var(--purple)}
+.pill{background:#eeecff;color:var(--purple);border-radius:20px;padding:8px 12px;font-size:12px;font-weight:bold}
+main{max-width:1050px;margin:28px auto;padding:0 16px;display:grid;grid-template-columns:1.7fr 1fr;gap:22px}
+h1{font-size:34px;line-height:1.1;letter-spacing:-1.2px;margin:0 0 10px}
+.sub{color:var(--muted);line-height:1.6;margin:0 0 22px}
+.card{background:white;border:1px solid var(--line);border-radius:19px;padding:22px;margin-bottom:17px;box-shadow:0 5px 20px #25294d08}
+h2{font-size:18px;margin:0 0 16px}
+label{display:block;font-size:13px;font-weight:700;margin:13px 0 7px}
+input,select,textarea{width:100%;border:1px solid #dfe1ec;border-radius:11px;padding:12px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:105px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid #c9c4ff;border-color:var(--purple)}
+button{border:0;border-radius:11px;padding:12px 16px;background:var(--purple);color:white;font-weight:bold;font-size:14px;cursor:pointer}
+button:hover{filter:brightness(.95)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.full{width:100%;margin-top:14px}
+.feed-head{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 14px}
+.feed-head h2{margin:0}
+.post-top{display:flex;align-items:center;gap:11px;margin-bottom:15px}
+.avatar{width:40px;height:40px;border-radius:14px;background:#eeecff;color:var(--purple);display:grid;place-items:center;font-weight:800}
+.post-author{font-weight:bold;font-size:14px}
+.meta{color:var(--muted);font-size:12px;margin-top:4px}
+.tag{margin-left:auto;background:#f0efff;color:#6256dc;padding:6px 9px;border-radius:9px;font-size:11px;font-weight:bold}
+.post-text{white-space:pre-wrap;line-height:1.6;font-size:15px;margin:0 0 17px;overflow-wrap:anywhere}
+.like{background:#f5f4ff;color:var(--purple);border:1px solid #e8e5ff}
+.like.liked{background:#6558e8;color:white}
+.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+.side-title{font-size:14px;font-weight:bold;margin-bottom:10px}
+.rule{display:flex;gap:10px;line-height:1.5;font-size:13px;margin:12px 0}
+.number{width:25px;height:25px;flex-shrink:0;border-radius:9px;background:#eeecff;color:var(--purple);display:grid;place-items:center;font-weight:bold}
+.empty{text-align:center;color:var(--muted);padding:26px 10px;font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:760px){main{grid-template-columns:1fr;margin-top:20px}.side{order:2}h1{font-size:30px}.nav{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">idee <span>in comune.</span></div>
+    <div class="pill">ITI OMAR · LA TUA VOCE CONTA</div>
+  </div>
+</header>
+
+<main>
+<section>
+  <h1>La scuola che<br>vorremmo. 💡</h1>
+  <p class="sub">Un posto dove le idee diventano proposte concrete. Scrivi la tua, scopri quelle degli altri e vota le proposte che vorresti vedere realizzate.</p>
+
+  <div class="card">
+    <h2>✍️ Condividi un'idea</h2>
+    <form id="ideaForm">
+      <label for="nome">Il tuo nome</label>
+      <input id="nome" maxlength="40" placeholder="Come ti chiami?" required>
+      <label for="classe">La tua classe</label>
+      <input id="classe" maxlength="20" placeholder="Es. 3A Informatica" required>
+      <label for="categoria">Categoria</label>
+      <select id="categoria">
+        <option>Vita scolastica</option>
+        <option>Spazi e ambienti</option>
+        <option>Eventi e attività</option>
+        <option>Didattica</option>
+        <option>Altro</option>
+      </select>
+      <label for="testo">La tua proposta</label>
+      <textarea id="testo" maxlength="700" placeholder="Che cosa cambieresti e perché?" required></textarea>
+      <button class="full" type="submit">Pubblica la mia idea ↗</button>
+      <p class="notice">Prima di pubblicare, ricorda che i contenuti devono essere rispettosi e non devono includere dati personali di altre persone.</p>
+      <p id="feedback" class="notice" role="status"></p>
+    </form>
+  </div>
+
+  <div class="feed-head">
+    <h2>La bacheca 💬</h2>
+    <span class="pill" id="count">0 idee</span>
+  </div>
+  <div id="feed"></div>
+</section>
+
+<aside class="side">
+  <div class="card">
+    <h2>La community 🫶</h2>
+    <p class="sub" style="margin-bottom:0">La scuola migliora quando ognuno può proporre qualcosa. Anche una piccola idea può fare la differenza.</p>
+  </div>
+  <div class="card">
+    <div class="side-title">Come funziona?</div>
+    <div class="rule"><span class="number">1</span><span><b>Scrivi</b><br>Condividi una proposta concreta.</span></div>
+    <div class="rule"><span class="number">2</span><span><b>Scopri</b><br>Leggi le idee nella bacheca.</span></div>
+    <div class="rule"><span class="number">3</span><span><b>Vota</b><br>Metti Mi piace alle proposte che sostieni.</span></div>
+  </div>
+  <div class="card">
+    <div class="side-title">Un progetto per tutti 💜</div>
+    <p class="notice">Usa questo spazio con rispetto. Niente insulti, contenuti discriminatori o informazioni private.</p>
+  </div>
+</aside>
+</main>
+
+<footer>Idee in Comune · ITI Omar · La tua voce conta.</footer>
+
+<script>
+const STORAGE_KEY = "idee-in-comune-demo-v1";
+let posts = [];
+try { posts = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+catch(e) { posts = []; }
+
+const feed = document.getElementById("feed");
+const form = document.getElementById("ideaForm");
+const feedback = document.getElementById("feedback");
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+}
+
+function render() {
+  feed.replaceChildren();
+  document.getElementById("count").textContent =
+    posts.length + (posts.length === 1 ? " idea" : " idee");
+
+  if (!posts.length) {
+    const empty = document.createElement("div");
+    empty.className = "card empty";
+    empty.textContent = "La bacheca è pronta per la prima idea. 💡";
+    feed.appendChild(empty);
+    return;
+  }
+
+  [...posts].reverse().forEach(post => {
+    const card = document.createElement("article");
+    card.className = "card";
+    const top = document.createElement("div");
+    top.className = "post-top";
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = "💡";
+    const info = document.createElement("div");
+    const author = document.createElement("div");
+    author.className = "post-author";
+    author.textContent = "Studente · " + post.classe;
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.textContent = post.data;
+    info.append(author, meta);
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = post.categoria;
+    top.append(avatar, info, tag);
+
+    const body = document.createElement("p");
+    body.className = "post-text";
+    body.textContent = post.testo;
+
+    const like = document.createElement("button");
+    like.className = "like" + (post.liked ? " liked" : "");
+    like.textContent = (post.liked ? "♥" : "♡") + " Mi piace · " + post.likes;
+    like.addEventListener("click", () => {
+      post.liked = !post.liked;
+      post.likes += post.liked ? 1 : -1;
+      save();
+      render();
+    });
+    card.append(top, body, like);
+    feed.appendChild(card);
+  });
+}
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const nome = document.getElementById("nome").value.trim();
+  const classe = document.getElementById("classe").value.trim();
+  const testo = document.getElementById("testo").value.trim();
+  const categoria = document.getElementById("categoria").value;
+  if (!nome || !classe || !testo) {
+    feedback.textContent = "Compila tutti i campi prima di pubblicare.";
+    return;
+  }
+  posts.push({
+    classe, testo, categoria, likes: 0, liked: false,
+    data: new Date().toLocaleDateString("it-IT")
+  });
+  save();
+  render();
+  form.reset();
+  feedback.textContent = "Idea aggiunta alla bacheca su questo dispositivo!";
+});
+
+render();
+</script>
+</body>
+</html>
