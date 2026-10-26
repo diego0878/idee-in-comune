@@ -1,57 +1,211 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#070914"><title>OMAR/IDEAS — Idee in Comune</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070914">
+<title>OMAR/IDEAS — Idee in Comune</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{--bg:#070914;--panel:#0e1325;--line:#293252;--text:#f4f7ff;--muted:#929bb9;--cyan:#55f6e5;--blue:#91a7ff;--violet:#b18aff;--pink:#ff8caf}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#4e62ff26,transparent 38%),radial-gradient(ellipse at 100% 20%,#00ffdc12,transparent 30%),var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;min-height:100vh}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(#8195ff20 1px,transparent 1px),linear-gradient(90deg,#8195ff20 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(#000,transparent 75%)}
-.wrap{width:min(1080px,calc(100% - 32px));margin:auto;position:relative}nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #293252}
-.brand{display:flex;gap:11px;align-items:center;font-weight:700;letter-spacing:-.04em}.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#08101b;font-size:22px;box-shadow:0 0 28px #55f6e52b}
-.pill,.eyebrow,.counter,.meta{font:11px 'DM Mono',monospace;letter-spacing:.09em}.pill{color:var(--cyan);border:1px solid #55f6e545;border-radius:30px;padding:8px 11px}.hero{padding:54px 0 34px;max-width:780px}.eyebrow{color:var(--cyan);text-transform:uppercase;display:flex;align-items:center;gap:9px}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
-h1{font-size:clamp(42px,7vw,74px);line-height:.99;letter-spacing:-.075em;margin:20px 0 18px}h1 span{color:transparent;background:linear-gradient(95deg,var(--cyan),var(--blue),var(--violet));background-clip:text}.hero p{color:var(--muted);line-height:1.7;max-width:600px;margin:0}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:20px;padding:8px 0 64px;align-items:start}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 14px}.head h2{font-size:18px;letter-spacing:-.03em;margin:0}.counter{color:var(--muted)}
-.panel{background:linear-gradient(145deg,#11172bf5,#0b1020f5);border:1px solid var(--line);border-radius:19px;box-shadow:0 18px 65px #0002}.formpanel{padding:22px;position:relative;overflow:hidden}.formpanel:before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent)}
-label{display:block;font-size:11px;letter-spacing:.05em;color:#cbd3ec;margin:0 0 8px;font-weight:700}.field{margin-bottom:17px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-input,textarea{width:100%;background:#080c19;border:1px solid #293252;border-radius:11px;padding:13px;color:var(--text);font:15px 'Space Grotesk',sans-serif;outline:none}input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #55f6e512}textarea{resize:vertical;min-height:125px;line-height:1.6}
-.hint{font-size:11px;color:var(--muted);margin-top:7px}.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.btn{border:0;border-radius:11px;padding:13px 17px;font:700 14px 'Space Grotesk',sans-serif;cursor:pointer}.primary{color:#07101a;background:linear-gradient(100deg,var(--cyan),#aabaff);box-shadow:0 8px 25px #55f6e51c}.status{font-size:12px;color:var(--muted);min-height:18px}.error{color:var(--pink)!important}.ok{color:var(--cyan)!important}
-.feed{display:grid;gap:13px}.post{padding:19px;border-radius:16px;background:linear-gradient(135deg,#11172a,#0b1020);border:1px solid var(--line);animation:up .25s ease}@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.posttop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.author{display:flex;align-items:center;gap:10px}.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(140deg,#1b4553,#35305d);border:1px solid #55f6e540;color:var(--cyan);font-weight:700}.authorname{font-size:13px;font-weight:700}.meta{color:var(--muted);font-size:10px;margin-top:3px}.tag{font:10px 'DM Mono',monospace;color:var(--cyan);border:1px solid #55f6e52a;border-radius:30px;padding:6px 8px}.postbody{font-size:15px;line-height:1.7;color:#e7ebfa;white-space:pre-wrap;overflow-wrap:anywhere}.postfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:13px;border-top:1px solid #ffffff0d}.like{background:#141b31;border:1px solid #293453;border-radius:10px;padding:8px 12px;color:#c5cde5;font:600 12px 'Space Grotesk',sans-serif;cursor:pointer}.like:hover{border-color:var(--violet);color:white}.like.liked{color:var(--pink);border-color:#ff8caf70;background:#ff8caf0d}
-.empty{padding:32px 18px;text-align:center;color:var(--muted);border:1px dashed #293252;border-radius:16px;font-size:13px;line-height:1.7}.empty strong{display:block;color:var(--text);margin-bottom:5px}.side{padding:22px;position:sticky;top:20px}.side h3{font-size:15px;margin:0 0 16px}.rule{display:flex;gap:11px;margin:15px 0;color:var(--muted);font-size:12px;line-height:1.6}.rule b{color:var(--cyan);font:12px 'DM Mono',monospace}.sidefoot{border-top:1px solid var(--line);margin-top:19px;padding-top:15px;color:#737e9f;font-size:10px;line-height:1.6}footer{padding:20px 0 30px;border-top:1px solid var(--line);font:10px 'DM Mono',monospace;color:#697391;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:780px){.layout{grid-template-columns:1fr}.side{position:static;grid-row:1}}@media(max-width:480px){.wrap{width:calc(100% - 24px)}nav{padding:17px 0}.pill{font-size:9px;padding:7px}.hero{padding:40px 0 26px}h1{font-size:46px}.formpanel,.side{padding:17px}.twocol{grid-template-columns:1fr;gap:0}.actions{align-items:stretch;flex-direction:column}.primary{width:100%}.post{padding:16px}}
-</style></head>
-<body><div class="wrap">
-<nav><div class="brand"><div class="logo">✳</div><div>OMAR<span style="color:var(--cyan)">/</span>IDEAS</div></div><div class="pill">● SPAZIO STUDENTI</div></nav>
-<header class="hero"><div class="eyebrow"><span class="dot"></span> ITI OMAR · IDEE IN COMUNE</div><h1>La scuola di domani.<br><span>Inizia da te.</span></h1><p>Hai un'idea per migliorare la scuola? Scrivila, condividila e fai squadra con gli altri studenti. Le idee migliori nascono insieme.</p></header>
-<main class="layout"><section>
-<div class="head"><h2>Condividi un'idea</h2><span class="counter">01 / CONTRIBUISCI</span></div>
-<form class="panel formpanel" id="ideaForm"><div class="twocol">
-<div class="field"><label for="name">IL TUO NOME</label><input id="name" maxlength="35" placeholder="Es. Luca" autocomplete="given-name" required></div>
-<div class="field"><label for="classroom">LA TUA CLASSE</label><input id="classroom" maxlength="12" placeholder="Es. 3B" required></div></div>
-<div class="field"><label for="idea">LA TUA IDEA</label><textarea id="idea" maxlength="600" placeholder="Se potessi cambiare una cosa della scuola, sarebbe..." required></textarea><div class="hint"><span id="charCount">0</span>/600 caratteri · Niente insulti o contenuti offensivi.</div></div>
-<div class="actions"><div class="status" id="status" aria-live="polite">La tua idea può fare la differenza.</div><button class="btn primary" type="submit">Pubblica idea ↗</button></div></form>
-<div class="head" style="margin-top:30px"><h2>Idee della community</h2><span class="counter" id="ideaCount">00 IDEE</span></div><div class="feed" id="feed" aria-live="polite"></div>
-</section><aside class="panel side"><h3><span style="color:var(--cyan)">✳</span> Come funziona</h3>
-<div class="rule"><b>01</b><span><strong style="color:var(--text)">Scrivi.</strong> Bastano nome, classe e una proposta concreta.</span></div>
-<div class="rule"><b>02</b><span><strong style="color:var(--text)">Condividi.</strong> Le idee pubblicate appaiono nel feed.</span></div>
-<div class="rule"><b>03</b><span><strong style="color:var(--text)">Sostieni.</strong> Metti like alle idee che vorresti vedere realizzate.</span></div>
-<div class="rule"><b>04</b><span><strong style="color:var(--text)">Rispetta.</strong> Le parole offensive vengono bloccate dal filtro.</span></div>
-<div class="sidefoot">PROGETTO STUDENTESCO · ITI OMAR<br>Una community migliore parte dal rispetto.</div></aside></main>
-<footer><span>OMAR/IDEAS — IDEE IN COMUNE</span><span>IMMAGINA · CONDIVIDI · MIGLIORA</span></footer></div>
+:root{--bg:#070914;--line:#293252;--text:#f4f7ff;--muted:#929bb9;--cyan:#55f6e5;--blue:#91a7ff;--violet:#b18aff;--pink:#ff8caf}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 10% 0%,#4e62ff26,transparent 38%),radial-gradient(ellipse at 100% 20%,#00ffdc12,transparent 30%),var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(#8195ff20 1px,transparent 1px),linear-gradient(90deg,#8195ff20 1px,transparent 1px);background-size:42px 42px}
+.wrap{width:min(1080px,calc(100% - 32px));margin:auto;position:relative}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:11px;align-items:center;font-weight:700;letter-spacing:-.04em}
+.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#08101b;font-size:22px;box-shadow:0 0 28px #55f6e52b}
+.pill,.eyebrow,.counter,.meta{font:11px 'DM Mono',monospace;letter-spacing:.09em}
+.pill{color:var(--cyan);border:1px solid #55f6e545;border-radius:30px;padding:8px 11px}
+.hero{padding:54px 0 34px;max-width:780px}
+.eyebrow{color:var(--cyan);text-transform:uppercase;display:flex;align-items:center;gap:9px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(42px,7vw,74px);line-height:.99;letter-spacing:-.075em;margin:20px 0 18px}
+h1 span{color:transparent;background:linear-gradient(95deg,var(--cyan),var(--blue),var(--violet));background-clip:text}
+.hero p{color:var(--muted);line-height:1.7;max-width:600px;margin:0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:20px;padding:8px 0 64px;align-items:start}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 14px}
+.head h2{font-size:18px;letter-spacing:-.03em;margin:0}
+.counter{color:var(--muted)}
+.panel{background:linear-gradient(145deg,#11172bf5,#0b1020f5);border:1px solid var(--line);border-radius:19px;box-shadow:0 18px 65px #0002}
+.formpanel{padding:22px;position:relative;overflow:hidden}
+.formpanel:before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent)}
+label{display:block;font-size:11px;letter-spacing:.05em;color:#cbd3ec;margin:0 0 8px;font-weight:700}
+.field{margin-bottom:17px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,textarea{width:100%;background:#080c19;border:1px solid var(--line);border-radius:11px;padding:13px;color:var(--text);font:15px 'Space Grotesk',sans-serif;outline:none}
+input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #55f6e512}
+textarea{resize:vertical;min-height:125px;line-height:1.6}
+.hint{font-size:11px;color:var(--muted);margin-top:7px}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.btn{border:0;border-radius:11px;padding:13px 17px;font:700 14px 'Space Grotesk',sans-serif;cursor:pointer}
+.primary{color:#07101a;background:linear-gradient(100deg,var(--cyan),#aabaff);box-shadow:0 8px 25px #55f6e51c}
+.status{font-size:12px;color:var(--muted);min-height:18px}
+.error{color:var(--pink)!important}.ok{color:var(--cyan)!important}
+.feed{display:grid;gap:13px}
+.post{padding:19px;border-radius:16px;background:linear-gradient(135deg,#11172a,#0b1020);border:1px solid var(--line);animation:up .25s ease}
+@keyframes up{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.posttop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.author{display:flex;align-items:center;gap:10px}
+.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(140deg,#1b4553,#35305d);border:1px solid #55f6e540;color:var(--cyan);font-weight:700}
+.authorname{font-size:13px;font-weight:700}
+.meta{color:var(--muted);font-size:10px;margin-top:3px}
+.tag{font:10px 'DM Mono',monospace;color:var(--cyan);border:1px solid #55f6e52a;border-radius:30px;padding:6px 8px}
+.postbody{cursor:pointer;user-select:none;font-size:15px;line-height:1.7;color:#e7ebfa;white-space:pre-wrap;overflow-wrap:anywhere}
+.postbody:after{content:" · Doppio clic per ❤️";font-size:10px;color:var(--muted)}
+.postfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:13px;border-top:1px solid #ffffff0d}
+.like{background:#141b31;border:1px solid #293453;border-radius:10px;padding:8px 12px;color:#c5cde5;font:600 12px 'Space Grotesk',sans-serif;cursor:pointer}
+.like:hover{border-color:var(--violet);color:white}
+.like.liked{color:var(--pink);border-color:#ff8caf70;background:#ff8caf0d}
+.empty{padding:32px 18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px;font-size:13px;line-height:1.7}
+.empty strong{display:block;color:var(--text);margin-bottom:5px}
+.side{padding:22px;position:sticky;top:20px}
+.side h3{font-size:15px;margin:0 0 16px}
+.rule{display:flex;gap:11px;margin:15px 0;color:var(--muted);font-size:12px;line-height:1.6}
+.rule b{color:var(--cyan);font:12px 'DM Mono',monospace}
+.sidefoot{border-top:1px solid var(--line);margin-top:19px;padding-top:15px;color:#737e9f;font-size:10px;line-height:1.6}
+footer{padding:20px 0 30px;border-top:1px solid var(--line);font:10px 'DM Mono',monospace;color:#697391;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.side{position:static;grid-row:1}}
+@media(max-width:480px){.wrap{width:calc(100% - 24px)}nav{padding:17px 0}.pill{font-size:9px;padding:7px}.hero{padding:40px 0 26px}h1{font-size:46px}.formpanel,.side{padding:17px}.twocol{grid-template-columns:1fr;gap:0}.actions{align-items:stretch;flex-direction:column}.primary{width:100%}.post{padding:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand"><div class="logo">✳</div><div>OMAR<span style="color:var(--cyan)">/</span>IDEAS</div></div>
+  <div class="pill">● SPAZIO STUDENTI</div>
+</nav>
+<header class="hero">
+  <div class="eyebrow"><span class="dot"></span> ITI OMAR · IDEE IN COMUNE</div>
+  <h1>La scuola di domani.<br><span>Inizia da te.</span></h1>
+  <p>Hai un'idea per migliorare la scuola? Scrivila, condividila e fai squadra con gli altri studenti. Le idee migliori nascono insieme.</p>
+</header>
+<main class="layout">
+<section>
+  <div class="head"><h2>Condividi un'idea</h2><span class="counter">01 / CONTRIBUISCI</span></div>
+  <form class="panel formpanel" id="ideaForm">
+    <div class="twocol">
+      <div class="field"><label for="name">IL TUO NOME</label><input id="name" maxlength="35" placeholder="Es. Luca" required></div>
+      <div class="field"><label for="classroom">LA TUA CLASSE</label><input id="classroom" maxlength="12" placeholder="Es. 3B" required></div>
+    </div>
+    <div class="field"><label for="idea">LA TUA IDEA</label><textarea id="idea" maxlength="600" placeholder="Se potessi cambiare una cosa della scuola, sarebbe..." required></textarea><div class="hint"><span id="charCount">0</span>/600 caratteri · Niente insulti o contenuti offensivi.</div></div>
+    <div class="actions"><div class="status" id="status" aria-live="polite">La tua idea può fare la differenza.</div><button class="btn primary" type="submit">Pubblica idea ↗</button></div>
+  </form>
+  <div class="head" style="margin-top:30px"><h2>Idee della community</h2><span class="counter" id="ideaCount">00 IDEE</span></div>
+  <div class="feed" id="feed" aria-live="polite"></div>
+</section>
+<aside class="panel side">
+  <h3><span style="color:var(--cyan)">✳</span> Come funziona</h3>
+  <div class="rule"><b>01</b><span><strong style="color:var(--text)">Scrivi.</strong> Bastano nome, classe e una proposta concreta.</span></div>
+  <div class="rule"><b>02</b><span><strong style="color:var(--text)">Condividi.</strong> Le idee pubblicate appaiono nel feed.</span></div>
+  <div class="rule"><b>03</b><span><strong style="color:var(--text)">Sostieni.</strong> Metti like alle idee che vorresti vedere realizzate.</span></div>
+  <div class="rule"><b>04</b><span><strong style="color:var(--text)">Rispetta.</strong> Le parole offensive vengono bloccate dal filtro.</span></div>
+  <div class="sidefoot">PROGETTO STUDENTESCO · ITI OMAR<br>Una community migliore parte dal rispetto.</div>
+</aside>
+</main>
+<footer><span>OMAR/IDEAS — IDEE IN COMUNE</span><span>IMMAGINA · CONDIVIDI · MIGLIORA</span></footer>
+</div>
 <script>
 const KEY='omarIdeasV2';
-const blocked=['cazzo','cazzi','merda','merde','stronzo','stronza','stronzi','vaffanculo','fanculo','puttana','bastardo','coglione','coglioni','minchia','troia','porcodio','porco dio'];
-let posts=[];try{posts=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(posts))posts=[]}catch(e){posts=[]}
-const $=id=>document.getElementById(id),form=$('ideaForm'),feed=$('feed'),idea=$('idea');
-function normalize(s){return s.toLocaleLowerCase('it').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[@4]/g,'a').replace(/[3€]/g,'e').replace(/[1!|]/g,'i').replace(/0/g,'o').replace(/5/g,'s').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim()}
-function offensive(s){let n=' '+normalize(s)+' ';return blocked.some(w=>n.includes(' '+normalize(w)+' '))}
-function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const blocked=[
+'cazzo','cazzi','cazzata','cazzate','cazzone','cazzoni','cazzaro',
+'merda','merde','merdoso','merdosa','merdaccia',
+'stronzo','stronza','stronzi','stronze','stronzata','stronzate','strunz',
+'vaffanculo','fanculo','affanculo','minchia','minchiate','minchione','minchioni',
+'coglione','coglioni','cogliona','coglionata','pirla','cretino','cretina',
+'idiota','idioti','deficiente','deficienti','imbecille','scemo','scema',
+'stupido','stupida','bastardo','bastarda','puttana','puttane','puttanata',
+'troia','troie','troiata','zoccola','mignotta','bagascia','baldracca',
+'culattone','rottinculo','leccaculo','paraculo','rompicoglioni','rompipalle',
+'figlio di puttana','figlia di puttana','figli di puttana','figlio di troia',
+'pezzo di merda','faccia di merda','testa di cazzo','testa di minchia',
+'vai a cagare','vai a fanculo','fatti fottere','fottuto','fottuta','fottiti',
+'fottere','inculare','inculato','inculata','succhiacazzi','succhiacazzo',
+'porcodio','porco dio','porca madonna','dio cane','dio boia',
+'madonna puttana','mannaggia a dio','mannaggia la madonna',
+'porca troia','porca puttana'
+];
+
+function normalize(s){
+ return String(s).toLocaleLowerCase('it')
+ .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+ .replace(/[@4]/g,'a').replace(/[3€]/g,'e')
+ .replace(/[1!|]/g,'i').replace(/0/g,'o')
+ .replace(/5/g,'s').replace(/\$/g,'s').replace(/7/g,'t')
+ .replace(/[^a-z0-9]+/g,' ')
+ .replace(/(.)\1{2,}/g,'$1$1').replace(/\s+/g,' ').trim();
+}
+function offensive(s){
+ const n=' '+normalize(s)+' ';
+ if(blocked.some(w=>n.includes(' '+normalize(w)+' ')))return true;
+ const patterns=[
+  /\bporco\s+(dio|iddio|di0|d10)\b/,
+  /\bporca\s+(madonna|mad0nna)\b/,
+  /\bdio\s+(cane|boia|ladro)\b/,
+  /\bmadonna\s+(puttana|troia)\b/,
+  /\bmannaggia\s+(a\s+)?(dio|la\s+madonna)\b/,
+  /\b(vai|andate)\s+a\s+(fanculo|cagare)\b/
+ ];
+ return patterns.some(p=>p.test(n));
+}
+function safe(s){
+ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+const $=id=>document.getElementById(id);
+const form=$('ideaForm'),feed=$('feed'),idea=$('idea');
+let posts=[];
+try{posts=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(posts))posts=[]}catch(e){posts=[]}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(posts))}catch(e){}}
 function status(s,type=''){$('status').textContent=s;$('status').className='status '+type}
-function render(){$('ideaCount').textContent=String(posts.length).padStart(2,'0')+' IDEE'+(posts.length===1?'A':'');if(!posts.length){feed.innerHTML='<div class="empty"><strong>Il feed è pronto per la tua idea.</strong>Qui appariranno le proposte pubblicate su questo dispositivo.</div>';return}feed.innerHTML=[...posts].reverse().map(p=>'<article class="post"><div class="posttop"><div class="author"><div class="avatar">'+safe(p.name.trim().charAt(0).toUpperCase())+'</div><div><div class="authorname">'+safe(p.name)+' <span style="color:var(--muted);font-weight:400">· '+safe(p.classroom)+'</span></div><div class="meta">'+safe(p.date)+'</div></div></div><span class="tag">IDEA</span></div><div class="postbody">'+safe(p.idea)+'</div><div class="postfoot"><span class="meta">UN’IDEA PUÒ CAMBIARE LE COSE</span><button class="like '+(p.liked?'liked':'')+'" data-id="'+safe(p.id)+'" aria-pressed="'+!!p.liked+'">'+(p.liked?'♥':'♡')+' Mi piace · '+Number(p.likes||0)+'</button></div></article>').join('')}
+function render(){
+ $('ideaCount').textContent=String(posts.length).padStart(2,'0')+' IDEE';
+ if(!posts.length){
+  feed.innerHTML='<div class="empty"><strong>Il feed è pronto per la tua idea.</strong>Qui appariranno le proposte salvate in questo browser.</div>';
+  return;
+ }
+ feed.innerHTML=[...posts].reverse().map(p=>
+ '<article class="post" data-post="'+safe(p.id)+'">'+
+ '<div class="posttop"><div class="author"><div class="avatar">'+safe(p.name.trim().charAt(0).toUpperCase())+'</div>'+
+ '<div><div class="authorname">'+safe(p.name)+' <span style="color:var(--muted);font-weight:400">· '+safe(p.classroom)+'</span></div>'+
+ '<div class="meta">'+safe(p.date)+'</div></div></div><span class="tag">IDEA</span></div>'+
+ '<div class="postbody">'+safe(p.idea)+'</div>'+
+ '<div class="postfoot"><span class="meta">DOPPIO CLIC = ❤️</span>'+
+ '<button class="like '+(p.liked?'liked':'')+'" data-id="'+safe(p.id)+'" aria-pressed="'+!!p.liked+'">'+
+ (p.liked?'♥':'♡')+' Mi piace · '+Number(p.likes||0)+'</button></div></article>'
+ ).join('');
+}
 idea.addEventListener('input',()=>$('charCount').textContent=idea.value.length);
-form.addEventListener('submit',e=>{e.preventDefault();let name=$('name').value.trim(),classroom=$('classroom').value.trim(),text=idea.value.trim();if(!name||!classroom||!text){status('Compila tutti e tre i campi.','error');return}if(offensive(name+' '+text)){status('La proposta contiene parole offensive. Modifica il testo e riprova.','error');return}if(text.length<8){status('Scrivi un’idea un po’ più completa.','error');return}posts.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,classroom,idea:text,date:new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'short',year:'numeric'}),likes:0,liked:false});save();render();form.reset();$('charCount').textContent='0';status('Idea aggiunta su questo dispositivo.','ok')});
-feed.addEventListener('click',e=>{let b=e.target.closest('button[data-id]');if(!b)return;let p=posts.find(x=>x.id===b.dataset.id);if(!p)return;p.liked=!p.liked;p.likes=Math.max(0,(p.likes||0)+(p.liked?1:-1));save();render()});render();
-</script></body></html>
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const name=$('name').value.trim(),classroom=$('classroom').value.trim(),text=idea.value.trim();
+ if(!name||!classroom||!text){status('Compila tutti e tre i campi.','error');return}
+ if(offensive(name+' '+text)){status('La proposta contiene parole offensive. Modifica il testo e riprova.','error');return}
+ if(text.length<8){status('Scrivi un’idea un po’ più completa.','error');return}
+ posts.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,classroom,idea:text,date:new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'short',year:'numeric'}),likes:0,liked:false});
+ save();render();form.reset();$('charCount').textContent='0';status('Idea salvata in questo browser.','ok');
+});
+function toggleLike(id){
+ const p=posts.find(x=>x.id===id);if(!p)return;
+ p.liked=!p.liked;p.likes=Math.max(0,(p.likes||0)+(p.liked?1:-1));save();render();
+}
+feed.addEventListener('click',e=>{
+ const b=e.target.closest('button[data-id]');if(b)toggleLike(b.dataset.id);
+});
+let lastTouchLikeAt=0,lastTapAt=0,lastTapId=null;
+feed.addEventListener('dblclick',e=>{
+ if(Date.now()-lastTouchLikeAt<700||e.target.closest('button'))return;
+ const card=e.target.closest('.post');if(card)toggleLike(card.dataset.post);
+});
+feed.addEventListener('touchend',e=>{
+ if(e.target.closest('button'))return;
+ const card=e.target.closest('.post');if(!card)return;
+ const now=Date.now(),id=card.dataset.post;
+ if(lastTapId===id&&now-lastTapAt<350){
+  e.preventDefault();lastTouchLikeAt=now;toggleLike(id);lastTapAt=0;lastTapId=null;
+ }else{lastTapAt=now;lastTapId=id}
+},{passive:false});
+render();
+</script>
+</body>
+</html>
